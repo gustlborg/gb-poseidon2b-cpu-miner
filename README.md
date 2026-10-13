@@ -44,7 +44,7 @@ gb-jetsam-cpu-miner.exe --pool rplant --coinbase <your-j1-address> --worker-name
 
 **HiveOS** — Flight Sheet → Custom miner:
 - Miner name: `gb-jetsam-cpu-miner`
-- Installation URL: `https://github.com/gustlborg/gb-jetsam-cpu-miner/releases/download/v1.0.0/gb-jetsam-cpu-miner-1.0.0.tar.gz`
+- Installation URL: `https://github.com/gustlborg/gb-poseidon2b-cpu-miner/releases/download/v1.0.0/gb-jetsam-cpu-miner-1.0.0.tar.gz`
 - Wallet and worker template: `%WAL%.%WORKER_NAME%` (or your `j1…` address)
 - Pool URL: `rplant`, `dongqn`, or your own pool URL
 - Extra config (optional, one per line): `THREADS=24`, `POOL_DIFF=auto`, `PASS=x`
