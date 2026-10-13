@@ -14,7 +14,7 @@
 
 ## Download
 
-Grab the archive for your platform from [Releases](../../releases), unpack it, and run it from inside the folder.
+Grab the archive for your platform from the [latest release](../../releases/latest), unpack it, and run it from inside the folder.
 
 | Platform | Archive |
 |---|---|
