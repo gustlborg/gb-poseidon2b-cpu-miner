@@ -1,0 +1,22 @@
+gb-jetsam-cpu-miner
+Copyright 2026 the gb-jetsam-cpu-miner authors
+
+This product is a modified distribution of towerminer, a free, open-source CPU
+miner for Jetsam (JTM), used under the Apache License, Version 2.0. The upstream
+project is unaffiliated with this distribution and takes no developer fee.
+
+Modifications made in this distribution include:
+  - a native Stratum client for JetsamStratum pools (e.g. rplant), with an
+    automatic share difficulty and a reconnect watchdog;
+  - support for HTTP pools (e.g. dongqn) with the same scheduler;
+  - automatic per-machine worker names and a payout-address check;
+  - a 3 % developer fee, mined on a separate parallel pool connection under the
+    developer's wallet (97 % of mining time goes to the user's wallet);
+  - build and startup hardening.
+
+The TowerWalk proof-of-work implementation is derived from the Jetsam project
+(jetsam_core, jetsam_poseidon2b), Apache-2.0.
+
+Developer fee: 3 %. See README.md.
+
+Third-party components are listed in LICENSE.
