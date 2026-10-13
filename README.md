@@ -2,7 +2,7 @@
 
 **GB Jetsam CPU Miner** is a CPU miner for **Jetsam (JTM)** and its TowerWalk proof of work. It mines on Stratum pools (rplant and any other JetsamStratum pool) and on HTTP pools (dongqn and any other node-RPC style pool), picks a good profile for your CPU on its own, and runs on Linux, Windows and HiveOS — one download per platform.
 
-**Current release: v1.0.0 (pre-release)**
+**Current release: v1.0.0**
 
 <p>
   <img src="img/dashboard-linux.png" alt="The miner's live view in a Linux terminal" width="49%">
