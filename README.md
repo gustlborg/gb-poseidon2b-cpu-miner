@@ -4,9 +4,6 @@
 
 **Current release: v1.0.2**
 
-<p><img src="img/dashboard-linux.png" alt="The miner's live view in a Linux terminal" width="100%"></p>
-<p><sub>The live view on Linux.</sub></p>
-
 <p><img src="img/dashboard-windows.png" alt="The miner's live view on Windows" width="100%"></p>
 <p><sub>The live view on Windows.</sub></p>
 
