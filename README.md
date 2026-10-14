@@ -1,16 +1,43 @@
-# GB Jetsam CPU Miner
+# GB Poseidon2b CPU Miner
 
-**GB Jetsam CPU Miner** is a CPU miner for **Jetsam (JTM)** and its TowerWalk proof of work. It mines on Stratum pools (rplant and any other JetsamStratum pool) and on HTTP pools (dongqn and any other node-RPC style pool), picks a good profile for your CPU on its own, and runs on Linux, Windows and HiveOS — one download per platform.
+**GB Poseidon2b CPU Miner** (program name `gb-jetsam-cpu-miner`) is a CPU miner for **Jetsam (JTM)** and its TowerWalk proof of work. It mines on Stratum pools (rplant and any other Jetsam Stratum pool) and on HTTP pools (dongqn and any other node-RPC style pool), picks a good profile for your CPU on its own, and runs on Linux, Windows and HiveOS — one download per platform.
 
-**Current release: v1.0.0**
+**Current release: v1.0.2**
 
 <p>
   <img src="img/dashboard-linux.png" alt="The miner's live view in a Linux terminal" width="49%">
-  <img src="img/dashboard-windows.png" alt="The miner's live view in Windows Terminal" width="49%">
+  <img src="img/dashboard-windows.png" alt="The miner's live view on Windows" width="49%">
 </p>
-<p><sub>The live view on Linux (left) and in Windows Terminal (right).</sub></p>
+<p><sub>The live view on Linux (left) and on Windows (right).</sub></p>
 
 ---
+
+## Hashrate
+
+| CPU | Cores / threads | L3 | Hashrate | per core | live vs cpuminer-rplant ¹ |
+|---|---:|---:|---:|---:|---:|
+| 2 x AMD EPYC 7C13 ² | 128 / 256 | 512 MB | 93.18 kH/s | 0.73 kH/s | +11 % |
+| AMD EPYC 7B12 | 64 / 128 | 256 MB | 41.71 kH/s | 0.65 kH/s | — |
+| AMD EPYC 7K62 | 48 / 96 | 192 MB | 38.85 kH/s | 0.81 kH/s | +10 % |
+| Intel Core Ultra 9 285K | 24 / 24 | 36 MB | 34.78 kH/s | 1.45 kH/s | +61 % |
+| AMD Ryzen 9 7950X | 16 / 32 | 64 MB | 30.47 kH/s | 1.90 kH/s | — |
+| AMD Ryzen 9 9950X3D | 16 / 32 | 128 MB | 27.16 kH/s | 1.70 kH/s | — |
+| AMD Ryzen 9 7945HX | 16 / 32 | 64 MB | 26.31 kH/s | 1.64 kH/s | — |
+| AMD EPYC 9455P (VM, 20 of 48 cores) ³ | 20 / 20 | — | 23.54 kH/s | 1.18 kH/s | — |
+| Intel Core i7-13700KF | 16 / 24 | 30 MB | 20.67 kH/s | 1.29 kH/s | — |
+| Intel Core i9-12900K | 16 / 24 | 30 MB | 18.47 kH/s | 1.15 kH/s | +13 % |
+| AMD Ryzen 9 5900X | 12 / 24 | 64 MB | 17.46 kH/s | 1.46 kH/s | +46 % |
+| AMD Ryzen 9 5950X | 16 / 32 | 64 MB | 16.83 kH/s | 1.05 kH/s | +10 % |
+| Intel Core Ultra 5 225F | 10 / 10 | 20 MB | 12.50 kH/s | 1.25 kH/s | — |
+| AMD Ryzen 7 5700X | 8 / 16 | 32 MB | 10.00 kH/s | 1.25 kH/s | +19 % |
+| AMD Ryzen 5 5600X | 6 / 12 | 32 MB | 9.11 kH/s | 1.52 kH/s | +50 % |
+| AMD Ryzen 7 5700G | 8 / 16 | 16 MB | 8.99 kH/s | 1.12 kH/s | +9 % |
+
+Measured 2026-10-14 on rented machines with v1.0.2: built-in hashrate benchmark (no pool, 2–3 minutes, mean of two runs), whole CPU, automatic profile. Your rate depends on clocks, cooling, memory and other load; `--tune` measures the best setting on your own machine.
+
+¹ Same machine, same pool (rplant), 5 minutes each, live, default settings, rate as shown by each miner.  
+² Two sockets.  
+³ Virtual machine with 20 cores of the CPU and no SMT.
 
 ## Download
 
@@ -18,11 +45,11 @@ Grab the archive for your platform from the [latest release](../../releases/late
 
 | Platform | Archive |
 |---|---|
-| Linux | `gb-jetsam-cpu-miner-1.0.0-linux.tar.gz` |
-| Windows | `gb-jetsam-cpu-miner-1.0.0-windows.zip` |
-| HiveOS | `gb-jetsam-cpu-miner-1.0.0.tar.gz` (custom-miner package) |
+| Linux | `gb-jetsam-cpu-miner-1.0.2-linux.tar.gz` |
+| Windows | `gb-jetsam-cpu-miner-1.0.2-windows.zip` |
+| HiveOS | `gb-jetsam-cpu-miner-1.0.2.tar.gz` (custom-miner package) |
 
-The Linux and Windows archives carry a `SHA256SUMS` with the SHA-256 of each file inside, and the `SHA256SUMS` on the release lists the archives themselves.
+The Linux and Windows archives carry a `SHA256SUMS` with the SHA-256 of each file inside, and the `SHA256SUMS` on the release lists the archives themselves. Some antivirus scanners flag `gb-jetsam-cpu-miner.exe` (a false positive); the Windows README shows how to check the file against `SHA256SUMS`.
 
 Runs on any 64-bit x86 CPU with SSE4.1 and PCLMULQDQ — practically every x86-64 CPU of the last decade; AVX2 and VPCLMULQDQ are used where the CPU has them. The Linux and HiveOS binary needs glibc 2.17 or newer, so it runs on virtually any Linux and on all current HiveOS images.
 
@@ -44,7 +71,7 @@ gb-jetsam-cpu-miner.exe --pool rplant --coinbase <your-j1-address> --worker-name
 
 **HiveOS** — Flight Sheet → Custom miner:
 - Miner name: `gb-jetsam-cpu-miner`
-- Installation URL: `https://github.com/gustlborg/gb-poseidon2b-cpu-miner/releases/download/v1.0.0/gb-jetsam-cpu-miner-1.0.0.tar.gz`
+- Installation URL: `https://github.com/gustlborg/gb-poseidon2b-cpu-miner/releases/download/v1.0.2/gb-jetsam-cpu-miner-1.0.2.tar.gz`
 - Wallet and worker template: `%WAL%.%WORKER_NAME%` (or your `j1…` address)
 - Pool URL: `rplant`, `dongqn`, or your own pool URL
 - Extra config (optional, one per line): `THREADS=24`, `POOL_DIFF=auto`, `PASS=x`
@@ -60,7 +87,7 @@ gb-jetsam-cpu-miner.exe --pool rplant --coinbase <your-j1-address> --worker-name
 | `rplant` | rplant, Europe — Stratum over TLS |
 | `rplant-na` / `rplant-asia` | rplant, North America / Asia |
 | `dongqn` | dongqn — HTTP |
-| `stratum+tcp://HOST:PORT` / `stratum+ssl://HOST:PORT` | any JetsamStratum pool |
+| `stratum+tcp://HOST:PORT` / `stratum+ssl://HOST:PORT` | any Jetsam Stratum pool |
 | `http://HOST:PORT` / `https://HOST:PORT` | any HTTP (node-RPC style) pool |
 
 On Stratum pools the miner picks a sensible share difficulty by itself (`--pool-diff` overrides it) and reconnects on its own if a pool session stalls.
@@ -75,6 +102,7 @@ On Stratum pools the miner picks a sensible share difficulty by itself (`--pool-
 --pool-diff auto|off|N share difficulty: auto (default), the pool's, or fixed
 --pass OPTIONS         pool password/options (default "x"; e.g. m=solo)
 --tune 20              measure the best profile for this CPU, store it, exit
+--show-profile         print the profile this machine would use, then exit
 --report-secs N        stats line every N seconds in a log (default 15)
 ```
 
@@ -82,7 +110,7 @@ On Stratum pools the miner picks a sensible share difficulty by itself (`--pool-
 
 ## Live view
 
-In a terminal the miner pins a live view at the top — hashrate now and averaged over 5 minutes to 24 hours, accepted / stale / rejected shares, CPU temperature, power draw and hashes per watt — while the log of jobs and shares scrolls below. It redraws itself when you resize the window. Written into a log file or under HiveOS it prints plain timestamped lines instead; `GBJETSAM_PLAIN=1` forces those in a terminal too, e.g. to paste the output into a bug report. Package power is read where the system allows it (root on Linux; not on Windows).
+In a terminal the miner pins a live view at the top: the run's facts (pool and its latency, network height and difficulty, CPU and threads), the hashrate now and averaged over 5 minutes to 24 hours, accepted / stale / rejected shares, CPU temperature and power where the system exposes them, memory (huge pages, scratchpads) and a hashrate bar for every CPU core — with the log of jobs and shares scrolling below. It follows the window size and reads on light and dark terminals. Keys: `q` quit, `p` pause/resume (the pool stays connected), `r` reset the averages. Written into a log file or under HiveOS it prints plain timestamped lines instead; `GBJETSAM_PLAIN=1` forces those in a terminal too, e.g. to paste the output into a bug report.
 
 ## Huge pages / large pages
 
@@ -95,16 +123,32 @@ The miner keeps each worker's scratchpad in huge pages (Linux) or large pages (W
 
 This miner mines **3 %** of the time to the developer's wallet and **97 %** to yours. The fee runs as a separate, parallel pool connection under the developer's address; your own shares are never redirected, and there is nothing to configure. If you prefer a miner without a fee, the upstream project `towerminer` (Apache-2.0, see NOTICE) has none.
 
-## What's new in 1.0.0
+## What's new in 1.0.2
 
-First release.
-
-- Stratum pools (rplant and any JetsamStratum pool) and HTTP pools (dongqn and any node-RPC pool); your own pool URL works too.
-- Automatic profile per CPU; `--tune` measures the best one for your machine.
-- Automatic share difficulty and a reconnect watchdog on Stratum.
-- Automatic per-machine worker names; the payout address is checked before mining.
-- Live view in the terminal; plain timestamped lines in logs and on HiveOS.
-- Linux (glibc 2.17+), Windows and HiveOS packages.
+- Faster automatic profile on AMD Ryzen 5000 desktop CPUs with up to 12
+  cores (measured on the Ryzen 5 5600X, Ryzen 7 5700X, Ryzen 7 5800X and
+  Ryzen 9 5900X; it also applies to the 5600 and 5800X3D): two threads per
+  core with two scratchpads and prefetch instead of one thread per core. The 16-core
+  Ryzen 9 5950X, the APU-based models with 16 MB of L3 (5500, 5600G, 5700,
+  5700G) and machines without SMT keep the previous profile.
+- Faster hashing with four scratchpads per worker on AMD Zen 3 / Zen 4 and
+  some Intel Core Ultra 200 (Arrow Lake) CPUs, on Linux and Windows: the
+  faster code switches on by itself whenever four scratchpads with prefetch
+  run, for example when `--tune` measures that setting best. This alone does
+  not change any automatic profile.
+- Built-in table of measured settings (Linux): for some CPU and core layouts,
+  e.g. six cores of a larger CPU in a rented machine, and for AMD Zen 4 /
+  Zen 5 with one thread per core, the miner now picks the faster scratchpad
+  setting by itself. This table is not used on whole machines with two
+  threads per core. `--show-profile` prints the profile without mining.
+- `--tune` now also tries four scratchpads per worker and stores the setting
+  it really measured.
+- Windows: clicking into the console window no longer pauses the miner's
+  output (QuickEdit is off while the live view runs), and other miners
+  running on the same machine are reported at start-up, as on Linux.
+- More robust pool handling: new share targets reach the workers without
+  restarting the search, HTTP jobs expire on time even when polls fail, and
+  a nonce range assigned by an HTTP pool is honoured.
 
 ## License
 
