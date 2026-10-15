@@ -67,6 +67,9 @@ or start the miner directly:
 gb-jetsam-cpu-miner.exe --pool rplant --coinbase <your-j1-address> --worker-name rig1
 ```
 
+> [!IMPORTANT]
+> **Windows: turn on large pages once.** Double-click `enable-large-pages.bat` in the miner folder, allow the administrator prompt, then sign out of Windows and back in (or restart). Without large pages the miner runs about 20–25 % slower.
+
 **HiveOS** — Flight Sheet → Custom miner:
 - Miner name: `gb-jetsam-cpu-miner`
 - Installation URL: `https://github.com/gustlborg/gb-poseidon2b-cpu-miner/releases/download/v1.0.2/gb-jetsam-cpu-miner-1.0.2.tar.gz`
@@ -115,7 +118,7 @@ In a terminal the miner pins a live view at the top: the run's facts (pool and i
 The miner keeps each worker's scratchpad in huge pages (Linux) or large pages (Windows); without them it runs about 20–25 % slower. The start-up line `huge pages: N/N workers` shows how many got them.
 
 - **Linux** — transparent huge pages must not be disabled: `cat /sys/kernel/mm/transparent_hugepage/enabled` should show `[madvise]` or `[always]`.
-- **Windows** — grant your account the **Lock pages in memory** right (`secpol.msc` → Local Policies → User Rights Assignment), then sign out and in again. Windows Home has no `secpol.msc`; the miner then runs on normal pages.
+- **Windows** — double-click `enable-large-pages.bat` from the Windows download once, allow the administrator prompt, then sign out and in again. By hand instead: grant your account the **Lock pages in memory** right (`secpol.msc` → Local Policies → User Rights Assignment), then sign out and in again. Windows Home has no `secpol.msc`; the script does not need it.
 
 ## Developer fee
 
