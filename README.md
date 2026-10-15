@@ -18,8 +18,8 @@
 | AMD EPYC 7K62 | 48 / 96 | 192 MB | 38.85 kH/s | 0.81 kH/s | +10 % |
 | Intel Core Ultra 9 285K | 24 / 24 | 36 MB | 34.78 kH/s | 1.45 kH/s | +61 % |
 | AMD Ryzen 9 9950X | 16 / 32 | 64 MB | 34.51 kH/s | 2.16 kH/s | — |
+| AMD Ryzen 9 9950X3D | 16 / 32 | 128 MB | 34.10 kH/s | 2.13 kH/s | — |
 | AMD Ryzen 9 7950X | 16 / 32 | 64 MB | 30.47 kH/s | 1.90 kH/s | — |
-| AMD Ryzen 9 9950X3D | 16 / 32 | 128 MB | 27.16 kH/s | 1.70 kH/s | — |
 | AMD Ryzen 9 7945HX | 16 / 32 | 64 MB | 26.31 kH/s | 1.64 kH/s | — |
 | AMD EPYC 9455P (VM, 20 of 48 cores) ³ | 20 / 20 | — | 23.54 kH/s | 1.18 kH/s | — |
 | Intel Core i7-13700KF | 16 / 24 | 30 MB | 20.67 kH/s | 1.29 kH/s | — |
@@ -31,7 +31,7 @@
 | AMD Ryzen 5 5600X | 6 / 12 | 32 MB | 9.11 kH/s | 1.52 kH/s | +50 % |
 | AMD Ryzen 7 5700G | 8 / 16 | 16 MB | 8.99 kH/s | 1.12 kH/s | +9 % |
 
-Measured 2026-10-14 (Ryzen 9 9950X: 2026-10-15) on rented machines with v1.0.2: built-in hashrate benchmark (no pool, 2–3 minutes, mean of two runs), whole CPU, automatic profile. Your rate depends on clocks, cooling, memory and other load; `--tune` measures the best setting on your own machine.
+Measured 2026-10-14 (Ryzen 9 9950X and 9950X3D: 2026-10-15) on rented machines with v1.0.2: built-in hashrate benchmark (no pool, 2–3 minutes, mean of two runs), whole CPU, automatic profile. Your rate depends on clocks, cooling, memory and other load; `--tune` measures the best setting on your own machine.
 
 ¹ Same machine, same pool (rplant), 5 minutes each, live, default settings, rate as shown by each miner.  
 ² Two sockets.  
