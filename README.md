@@ -120,10 +120,6 @@ The miner keeps each worker's scratchpad in huge pages (Linux) or large pages (W
 - **Linux** — transparent huge pages must not be disabled: `cat /sys/kernel/mm/transparent_hugepage/enabled` should show `[madvise]` or `[always]`. If they are on and the warning still appears, the memory is too fragmented: `echo 1 | sudo tee /proc/sys/vm/compact_memory` or a reboot.
 - **Windows** — double-click `enable-large-pages.bat` from the Windows download once, allow the administrator prompt, then sign out and in again. By hand instead: grant your account the **Lock pages in memory** right (`secpol.msc` → Local Policies → User Rights Assignment), then sign out and in again. Windows Home has no `secpol.msc`; the script does not need it. If the warning shows `os error 1450`, the right is there but the memory is fragmented: restart the PC and start the miner soon after.
 
-## Developer fee
-
-This miner mines **3 %** of the time to the developer's wallet and **97 %** to yours. The fee runs as a separate, parallel pool connection under the developer's address; your own shares are never redirected, and there is nothing to configure. If you prefer a miner without a fee, the upstream project `towerminer` (Apache-2.0, see NOTICE) has none.
-
 ## What's new in 1.0.3
 - Large pages for more workers: up to four workers now share one 2 MiB page
   (one scratchpad each) instead of taking a page each, so the miner needs up
